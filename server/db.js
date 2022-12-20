@@ -1,40 +1,38 @@
-import mongoose = reuquire('mongoose');
-const { Schema } = mongoose;
+import mongoose = require('mongoose');
 
-const productSchema = new Schema({
+const productSchema = new mongoose.Schema({
   id:  Number,
   name: String,
   slogan: String,
   description: String,
   category: String,
-  category:   String
   default_price: Number,
 });
 
-const skusSchema = new Schema({
+const skusSchema = new mongoose.Schema({
   id: Number,
   styleId: Number,
   size: String,
   quantity: Number
 });
 
-const stylesSchema = new Schema({
+const stylesSchema = new mongoose.Schema({
   id: Number,
   productId: Number,
   name: String,
-  slae_price: Number,
+  sale_price: Number,
   original_price: Number,
   default_style: Number
 });
 
-const photosSchema = new Schema({
+const photosSchema = new mongoose.Schema({
   id: Number,
   styleId: Number,
   url: String,
   thumbnail_url: String
 });
 
-const relatedSchema = new Schema({
+const relatedSchema = new mongoose.Schema({
   id: Number,
   current_product_id: Number,
   related_product_id: Number
