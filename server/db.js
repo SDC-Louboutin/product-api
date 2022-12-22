@@ -8,11 +8,11 @@ mongoose.connect('mongodb://localhost:27017/product')
   })
 
 // command to import the csv file
-// mongoimport --type csv -d product -c product --headerline --drop product.csv
-// mongoimport --type csv -d product -c skus --headerline --drop skus.csv
-// mongoimport --type csv -d product -c styles --headerline --drop styles.csv
+// mongoimport --type csv -d product -c products --headerline --drop product.csv  //uploaded
+// mongoimport --type csv -d product -c skus --headerline --drop skus.csv //uploaded
+// mongoimport --type csv -d product -c styles --headerline --drop styles.csv //uploaded
 // mongoimport --type csv -d product -c photos --headerline --drop photos.csv
-// mongoimport --type csv -d product -c related --headerline --drop related.csv
+// mongoimport --type csv -d product -c related --headerline --drop related.csv //uploaded
 
 const productSchema = new mongoose.Schema({
   id:  Number,
@@ -20,7 +20,7 @@ const productSchema = new mongoose.Schema({
   slogan: String,
   description: String,
   category: String,
-  default_pric: Number
+  default_price: Number
 });
 
 const skusSchema = new mongoose.Schema({
@@ -52,13 +52,22 @@ const relatedSchema = new mongoose.Schema({
   related_product_id: Number
 });
 
-const Product = mongoose.model('Product', productSchema);
+const Products = mongoose.model('Product', productSchema);
 const Skus = mongoose.model('Skus', skusSchema);
 const Styles = mongoose.model('Styles', stylesSchema);
 const Photos = mongoose.model('Photos', photosSchema);
 const Related = mongoose.model('Related', relatedSchema);
 
-module.exports.Product = Product;
+// mini test
+// Products.insert({id: 6})
+//   .then((result) => {
+//     console.log('the result is', result);
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   })
+
+module.exports.Products = Products;
 module.exports.Skus = Skus;
 module.exports.Styles = Styles;
 module.exports.Photos = Photos;
