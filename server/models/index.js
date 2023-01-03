@@ -21,13 +21,18 @@ const getProductStyles = (id) => {
 }
 
 const getProductPhotos = (id) => {
-  console.log('inside getProductStyles models', id);
+  console.log('inside getProductPhotos models', id);
   return Photos.find({styleId: id});
 }
 
 const getProductSkus = (id) => {
-  console.log('inside getProductStyles models', id);
+  console.log('inside getProductSkus models', id);
   return Skus.find({styleId: id});
+}
+
+const getProductRelated = (id) => {
+  console.log('inside getProductRelated models', id);
+  return Related.find({current_product_id: id});
 }
 
 module.exports = {
@@ -36,6 +41,7 @@ module.exports = {
   getProductInfo,
   getProductStyles,
   getProductPhotos,
-  getProductSkus
+  getProductSkus,
+  getProductRelated
 }
 

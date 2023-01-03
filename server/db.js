@@ -111,7 +111,7 @@ const ProductsFeatures = mongoose.model('ProductFeatures', productFeatureSchema,
 const Skus = mongoose.model('Skus', skusSchema);
 const Styles = mongoose.model('Styles', stylesSchema);
 const Photos = mongoose.model('Photos', photosSchema);
-const Related = mongoose.model('Related', relatedSchema);
+const Related = mongoose.model('Related', relatedSchema, 'related');
 const Features = mongoose.model('Features', featuresSchema);
 
 // mini test

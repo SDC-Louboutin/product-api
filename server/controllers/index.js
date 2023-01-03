@@ -1,5 +1,22 @@
 var models = require('../models/index.js');
 
+const getProductRelated = (req, res) => {
+  console.log('the request data is: ', req.params.product_id);
+  let id = req.params.product_id;
+  models.getProductRelated(id)
+    .then((related) => {
+      console.log(related);
+      const allRelatedProducts = [];
+      for (let i = 0; i < related.length; i += 1) {
+        allRelatedProducts.push(related[i].related_product_id);
+      }
+      res.send(allRelatedProducts);
+    })
+    .catch((err) => {
+      res.send(err)
+    })
+}
+
 const getProductStyles = async (req, res) => {
   console.log('the request data is: ', req.params.product_id);
   let id = req.params.product_id;
@@ -70,5 +87,6 @@ const allProducts = (req, res) => {
 module.exports = {
   allProducts,
   getProductInfo,
-  getProductStyles
+  getProductStyles,
+  getProductRelated
 }
