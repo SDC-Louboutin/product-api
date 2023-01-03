@@ -22,18 +22,20 @@ const getProductStyles = (id) => {
 
 const getProductPhotos = (id) => {
   console.log('inside getProductStyles models', id);
-  return Styles.find({productId: id});
+  return Photos.find({styleId: id});
 }
 
 const getProductSkus = (id) => {
   console.log('inside getProductStyles models', id);
-  return Styles.find({productId: id});
+  return Skus.find({styleId: id});
 }
 
 module.exports = {
   allProductsModel,
   getProductInfoFeature,
   getProductInfo,
-  getProductStyles
+  getProductStyles,
+  getProductPhotos,
+  getProductSkus
 }
 

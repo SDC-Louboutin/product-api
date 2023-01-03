@@ -1,23 +1,30 @@
 var models = require('../models/index.js');
 
-const getProductStyles = (req, res) => {
+const getProductStyles = async (req, res) => {
   console.log('the request data is: ', req.params.product_id);
   let id = req.params.product_id;
-  models.getProductStyles(id)
-    .then((styles) => {
-      models.getProductInfo(id)
-        .then((data) => {
-          console.log('styles data inside styles controller', styles);
-          console.log('data inside styles controller', data);
-          res.send(styles);
-        })
-        .catch((err) => {
-          res.send(err)
-        })
-    })
-    .catch((err) => {
-      res.send(err)
-    })
+  const obj = {};
+  try {
+    const styles = await models.getProductStyles(id);
+    obj['product_id'] = id;
+    obj['results'] = [];
+    for (let i = 0; i < styles.length; i += 1) {
+      const eachStyle = styles[i].toObject();
+      const photos = await models.getProductPhotos(styles[i].id);
+      delete photos['_id'];
+      delete photos['id'];
+      delete photos['styleId'];
+      console.log(photos);
+      eachStyle['photos'] = photos;
+      const skus = await models.getProductSkus(styles[i].id);
+      console.log(skus);
+      eachStyle['skus'] = skus;
+      obj['results'].push(eachStyle);
+    }
+    res.send(obj);
+  } catch(error) {
+    res.send(error);
+  }
 }
 
 const getProductInfo = (req, res) => {
