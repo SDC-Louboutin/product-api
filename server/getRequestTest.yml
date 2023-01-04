@@ -1,0 +1,12 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - duration: 10
+      arrivalRate: 1000
+      name: Sustained load
+
+scenarios:
+  - name: "get Request"
+    flow:
+      - get:
+          url: "/products/999994/Related"
