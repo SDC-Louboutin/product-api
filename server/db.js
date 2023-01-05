@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 
+// //localhost:27017/product    - local machine route
+// //ec2-3-88-62-17.compute-1.amazonaws.com:27017      -ec2 mongodb Route
+
 mongoose.connect('mongodb://ec2-3-88-62-17.compute-1.amazonaws.com:27017/product')
   .then(() => {
     console.log('connected');
@@ -200,3 +203,8 @@ module.exports.Features = Features;
 //   .catch((error) => {
 //     console.log(error);
 //   });
+
+//db.styles.find().forEach(function(x) {
+//   x.id = Number(x.id);
+//   db.products.save(x);
+// });
