@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/product')
+mongoose.connect('mongodb://ec2-3-88-62-17.compute-1.amazonaws.com:27017/product')
   .then(() => {
     console.log('connected');
   }).catch(() => {
