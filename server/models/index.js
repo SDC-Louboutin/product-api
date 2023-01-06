@@ -1,8 +1,9 @@
 var db = require('../db.js');
 const { Products, Skus, Styles, Photos, Related, Features } = require('../db.js')
 
-const allProductsModel = () => {
-  return Products.find();
+const allProductsModel = (skip, count) => {
+  console.log('allProducts Page and Count is: ', skip, count);
+  return Products.find().skip(skip).limit(count);
 };
 
 const getProductInfoFeature = (id) => {
