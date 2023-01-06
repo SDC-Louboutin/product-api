@@ -73,7 +73,10 @@ const getProductInfo = (req, res) => {
 }
 
 const allProducts = (req, res) => {
-  models.allProductsModel()
+  const page = req.params.page || req.query.page || 1;
+  const count = req.params.count || req.query.count || 5;
+  const skip = (page - 1) * count;
+  models.allProductsModel(skip, count)
     .then((data) => {
       console.log('we have successfully sent the data: ', data);
       res.send(data);

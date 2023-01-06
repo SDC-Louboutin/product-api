@@ -11,7 +11,7 @@ mongoose.connect('mongodb://ec2-3-88-62-17.compute-1.amazonaws.com:27017/product
   })
 
 // command to import the csv file
-// mongoimport --type csv -d product -c products --headerline --drop product.csv  //uploaded
+// mongoimport --type csv -d product -c products --headerline  //uploaded
 // mongoimport --type csv -d product -c skus --headerline --drop skus.csv //uploaded
 // mongoimport --type csv -d product -c styles --headerline --drop styles.csv //uploaded
 // mongoimport --type csv -d product -c photos --headerline --drop photos.csv
@@ -204,7 +204,20 @@ module.exports.Features = Features;
 //     console.log(error);
 //   });
 
-//db.styles.find().forEach(function(x) {
+// db.features.find().forEach(function(x) {
 //   x.id = Number(x.id);
+//   x.product_id = Number(x.product_id);
 //   db.products.save(x);
+// });
+
+// db.features.find().forEach(function(x) {
+//   x.id = Number(x.id);
+//   x.product_id = Number(x.product_id);
+//   db.features.updateOne({ _id: x._id }, { $set: x });
+// });
+
+// db.photos.find().forEach(function(x) {
+//   x.id = Number(x.id);
+//   x.styleId = Number(x.styleId);
+//   db.photos.updateOne({ _id: x._id }, { $set: x });
 // });
