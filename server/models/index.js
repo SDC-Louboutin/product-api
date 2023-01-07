@@ -18,17 +18,17 @@ const getProductInfo = (id) => {
 
 const getProductStyles = (id) => {
   console.log('inside getProductStyles models', id);
-  return Styles.find({productId: id});
+  return Styles.find({productId: id}).exec();
 }
 
 const getProductPhotos = (id) => {
   console.log('inside getProductPhotos models', id);
-  return Photos.find({styleId: id});
+  return Photos.find({styleId: id}).populate('styleId').exec();
 }
 
 const getProductSkus = (id) => {
   console.log('inside getProductSkus models', id);
-  return Skus.find({styleId: id});
+  return Skus.find({styleId: id}).populate('styleId').exec();
 }
 
 const getProductRelated = (id) => {

@@ -34,6 +34,13 @@ const skusSchema = new mongoose.Schema({
   quantity: Number
 });
 
+const photosSchema = new mongoose.Schema({
+  id: Number,
+  styleId: Number,
+  url: String,
+  thumbnail_url: String
+});
+
 const stylesSchema = new mongoose.Schema({
   id: Number,
   productId: Number,
@@ -41,13 +48,6 @@ const stylesSchema = new mongoose.Schema({
   sale_price: Number,
   original_price: Number,
   default_style: Number
-});
-
-const photosSchema = new mongoose.Schema({
-  id: Number,
-  styleId: Number,
-  url: String,
-  thumbnail_url: String
 });
 
 const relatedSchema = new mongoose.Schema({
