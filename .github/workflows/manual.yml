@@ -17,11 +17,6 @@ on:
         required: true
         # The data type of the input
         type: string
-      color:
-        description: 'Primary color'
-        default: '0E1117'
-        required: true
-        type: string
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
