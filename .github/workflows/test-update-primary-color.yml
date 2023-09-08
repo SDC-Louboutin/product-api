@@ -1,0 +1,34 @@
+name: Update Primary Color in Another Repository
+
+on:
+  workflow_dispatch:  # Trigger the workflow manually
+
+jobs:
+  update-primary-color:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2  # Checkout the current repository
+
+    - name: Clone Another Repository
+      run: |
+        git clone https://github.com/SDC-Louboutin/new-product-api4.git  # Replace with the URL of the repository to update
+        cd new-product-api4
+        git config user.name "andepants"
+        git config user.email "andrewsheim@gmail.com"
+
+    - name: Modify JSON File
+      run: |
+        # Modify the primary color inside the JSON file using jq
+        jq '.colors.primary = "#FF5733"' color.json > updated-color.json
+        mv updated-color.json color.json
+
+    - name: Commit Changes
+      run: |
+        git add color.json
+        git commit -m "Update primary color in color.json"
+
+    - name: Push Changes
+      run: |
+        git push origin main  # Replace 'main' with the target branch of the repository
