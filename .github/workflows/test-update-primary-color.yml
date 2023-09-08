@@ -18,6 +18,10 @@ jobs:
         git config user.name "andepants"
         git config user.email "andrewsheim@gmail.com"
 
+    - name: List Files (Debugging)
+      run: |
+        ls -al   # List files in the current directory for debugging purposes
+
     - name: Modify JSON File
       run: |
         # Modify the primary color inside the JSON file using jq
