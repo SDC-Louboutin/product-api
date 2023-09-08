@@ -43,6 +43,6 @@ jobs:
           TOKEN="${GITHUB_TOKEN}"
           
           # Create a fork using the GitHub API
-          curl -X POST -H "Accept: application/vnd.github.v3+json" -H "Authorization: token $TOKEN" "https://api.github.com/repos/$OWNER_NAME/$REPO_NAME/forks"
+          curl -X POST -H "Accept: application/vnd.github.v3+json" -H "Authorization: token $TOKEN" -d '{"organization": "SDC-Louboutin", "name": "new-product-api4"}' "https://api.github.com/repos/$OWNER_NAME/$REPO_NAME/forks"
 
 
