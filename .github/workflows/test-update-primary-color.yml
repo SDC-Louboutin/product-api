@@ -36,6 +36,9 @@ jobs:
     - name: View contents of colors.json
       run: cat new-product-api4/color.json
 
+    - name: Check Status
+      run: git status
+      
     - name: Commit Changes
       run: |
         git add new-product-api4/color.json
