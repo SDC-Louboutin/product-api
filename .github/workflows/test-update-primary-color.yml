@@ -15,8 +15,8 @@ jobs:
       run: |
         git clone https://github.com/SDC-Louboutin/new-product-api4.git  # Replace with the URL of the repository to update
         cd new-product-api4
-        git config user.name "andepants"
-        git config user.email "andrewsheim@gmail.com"
+        git config --global user.name "andepants"
+        git config --global user.email "andrewsheim@gmail.com"
 
     - name: List Files (Debugging)
       run: |
