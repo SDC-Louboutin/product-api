@@ -33,6 +33,9 @@ jobs:
         jq '.colors.primary = "#FF5733"' new-product-api4/color.json > updated-color.json
         mv updated-color.json new-product-api4/color.json
 
+    - name: View contents of colors.json
+      run: cat new-product-api4/color.json
+
     - name: Commit Changes
       run: |
         git add new-product-api4/color.json
