@@ -23,6 +23,9 @@ jobs:
         ls -al   # List files in the current directory for debugging purposes
         cd new-product-api4
         ls -al
+        
+    - name: View contents of colors.json
+      run: cat color.json
 
     - name: Modify JSON File
       run: |
