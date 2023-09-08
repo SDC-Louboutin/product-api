@@ -30,3 +30,19 @@ jobs:
     # Runs a single command using the runners shell
     - name: Send greeting
       run: echo "Hello ${{ inputs.name }}"
+  fork:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Fork Repository
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN_TO_FORK }}
+        run: |
+          REPO_NAME="product-api"
+          OWNER_NAME="SDC-Louboutin"
+          TOKEN="${GITHUB_TOKEN}"
+          
+          # Create a fork using the GitHub API
+          curl -X POST -H "Accept: application/vnd.github.v3+json" -H "Authorization: token $TOKEN" "https://api.github.com/repos/$OWNER_NAME/$REPO_NAME/forks"
+
+
