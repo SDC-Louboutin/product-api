@@ -25,7 +25,7 @@ jobs:
         ls -al
         
     - name: View contents of colors.json
-      run: cat color.json
+      run: cat new-product-api4/color.json
 
     - name: Modify JSON File
       run: |
