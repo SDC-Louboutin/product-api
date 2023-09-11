@@ -37,7 +37,9 @@ jobs:
       run: cat new-product-api4/color.json
 
     - name: Check Status
-      run: git status
+      run: |
+        git status
+        cd new-product-api4
 
     - name: Push Changes to origin/main
       run: |
@@ -50,5 +52,7 @@ jobs:
         GH_TOKEN: ${{ secrets.PAT_TOKEN_TO_FORK}}
         
     - name: Check Status
-      run: git status
+      run: |
+        git status
+        cd new-product-api4
       
