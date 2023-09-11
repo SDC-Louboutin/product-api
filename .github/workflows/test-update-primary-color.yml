@@ -32,6 +32,8 @@ jobs:
         # Modify the primary color inside the JSON file using jq
         jq '.colors.primary = "#FF5733"' new-product-api4/color.json > updated-color.json
         mv updated-color.json new-product-api4/color.json
+        git diff
+        git status
 
     - name: View contents of colors.json
       run: cat new-product-api4/color.json
