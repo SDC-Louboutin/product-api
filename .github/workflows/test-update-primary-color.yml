@@ -2,6 +2,18 @@ name: Update Primary Color in Another Repository
 
 on:
   workflow_dispatch:  # Trigger the workflow manually
+  
+    inputs:
+      color:
+        description: 'Primary Hex Color'
+        default: "0E1117"
+        required: true
+        type: string
+      name:
+        description: 'Company name and repo name'
+        default: "default_repo"
+        required: true
+        type: string
 
 jobs:
   update-primary-color:
@@ -11,7 +23,7 @@ jobs:
     - name: Checkout new product api repo repo
       uses: actions/checkout@master
       with:
-        repository: SDC-Louboutin/new-product-api4
+        repository: SDC-Louboutin/${{ inputs.name }}
         token: ${{ secrets.PAT_TOKEN_TO_FORK}}
 
     - name: Set Config
@@ -29,7 +41,7 @@ jobs:
     - name: Modify JSON File
       run: |
         # Modify the primary color inside the JSON file using jq
-        jq '.colors.primary = "#FF5733"' color.json > updated-color.json
+        jq '.colors.primary = "${{ inputs.color }}"' color.json > updated-color.json
         mv updated-color.json color.json
 
     - name: View contents of colors.json
