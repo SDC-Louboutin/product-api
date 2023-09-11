@@ -9,11 +9,11 @@ jobs:
 
     steps:
     - name: Checkout new product api repo repo
-      uses: actions/checkout@v4
+      uses: actions/checkout@master
       with:
         repository: SDC-Louboutin/new-product-api4
-        path: main
-        
+        token: ${{ secrets.PAT_TOKEN_TO_FORK}}
+
     - name: Set Config
       run: |
         git config --global user.name "GitHub Actions"
