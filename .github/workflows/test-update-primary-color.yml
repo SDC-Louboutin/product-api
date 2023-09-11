@@ -15,8 +15,8 @@ jobs:
       run: |
         git clone https://github.com/SDC-Louboutin/new-product-api4.git
         cd new-product-api4 
-        git config --global user.name "andepants"
-        git config --global user.email "andrewsheim@gmail.com"
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
 
     - name: List Files (Debugging)
       run: |
@@ -26,14 +26,25 @@ jobs:
         
     - name: View contents of colors.json
       run: cat new-product-api4/color.json
+      
+    - name: Check Status
+      run: |
+        git status
+        cd new-product-api
 
     - name: Modify JSON File
       run: |
         # Modify the primary color inside the JSON file using jq
         jq '.colors.primary = "#FF5733"' new-product-api4/color.json > updated-color.json
         mv updated-color.json new-product-api4/color.json
-        git diff
+        git remote add origin_repo https://github.com/SDC-Louboutin/new-product-api4.git
+        git checkout -b update-color  # Create and switch to a new branch
+        git add .
+        git commit -m "Update primary color in color.json"
+        git push origin_repo update-color  # Push to the new branch in new-product-api4
         git status
+      env:
+        GH_TOKEN: ${{ secrets.PAT_TOKEN_TO_FORK}}
 
     - name: View contents of colors.json
       run: cat new-product-api4/color.json
@@ -41,20 +52,5 @@ jobs:
     - name: Check Status
       run: |
         git status
-        cd new-product-api4
-
-    - name: Push Changes to origin/main
-      run: |
-        git config --global user.name "GitHub Actions"
-        git config --global user.email "actions@github.com"
-        git add new-product-api4/
-        git commit -m "Update primary color in color.json"
-        git push origin main
-      env:
-        GH_TOKEN: ${{ secrets.PAT_TOKEN_TO_FORK}}
-        
-    - name: Check Status
-      run: |
-        git status
-        cd new-product-api4
+        cd new-product-api
       
