@@ -33,7 +33,7 @@ jobs:
         mv updated-color.json color.json
 
     - name: View contents of colors.json
-      run: cat new-product-api4/color.json
+      run: cat color.json
 
     - name: Add, commit, push changes
       run: |
