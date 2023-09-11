@@ -34,7 +34,8 @@ jobs:
         mv updated-color.json new-product-api4/color.json
         git remote add origin_repo https://github.com/SDC-Louboutin/new-product-api4.git
         git checkout -b update-color  # Create and switch to a new branch
-        git add new-product-api4
+        git status
+        git add new-product-api4/
         git commit -m "Update primary color in color.json 2"
         git push origin_repo update-color  # Push to the new branch in new-product-api4
         git status
