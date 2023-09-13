@@ -41,7 +41,7 @@ jobs:
     steps:
       - name: Fork Repository
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN_TO_FORK }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TEST }}
         run: |
           REPO_NAME="product-api"
           OWNER_NAME="SDC-Louboutin"
